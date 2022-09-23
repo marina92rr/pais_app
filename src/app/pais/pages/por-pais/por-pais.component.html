@@ -1,0 +1,51 @@
+
+
+<h2>Por País</h2>
+
+<hr>
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="buscar()">  <!--input :formulario busqueda pais       ngSubmit= buscar(): al darle enter hace la funcion-->
+            <input 
+                type="text"
+                name="termino"
+                [(ngModel)]="termino"
+                placeholder="Buscar País.."/>
+        </form>     <!--ngModel = termino viene de porpaiscomponent-->
+
+    </div>
+</div>
+
+<hr>
+
+<div class="alert alert-danger"><!--alert-danger: alerta roja-->
+    No se encontró nada con el término Abc
+</div>
+
+
+<div class="row">
+    <div class="col">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Bandera</th>
+                    <th>Nombre</th>
+                    <th>población</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Bandera</td>
+                    <td>nombre</td>
+                    <td>12423543</td>
+                    <td>
+                        <a href="/pais/cri"> Ver pais...</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
