@@ -1,0 +1,8 @@
+<form (ngSubmit)="buscar()">  <!--input :formulario busqueda pais       ngSubmit= buscar(): al darle enter hace la funcion-->
+    <input 
+        type="text"
+        name="termino"
+        [(ngModel)]="termino"
+        (input)="teclaPresionar()"
+        placeholder="Buscar País.."/>
+</form>     <!--ngModel = termino viene de porpaiscomponent-->
