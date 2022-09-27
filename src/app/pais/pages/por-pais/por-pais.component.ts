@@ -7,6 +7,11 @@ import { PaisService } from '../../services/pais.service';
   selector: 'app-por-pais',
   templateUrl: './por-pais.component.html',
   styles: [
+    `
+      li {
+        cursor : pointer;
+      }
+    `
   ]
 })
 export class PorPaisComponent implements OnInit {
@@ -14,6 +19,10 @@ export class PorPaisComponent implements OnInit {
   termino: string = '';             //termino es el de [(ngModel)] de html(lo que escribes para buscar)
   hayError : boolean = false;
   paises : Country[]= [];
+
+  
+  paisesSugeridos : Country[]= [];
+  mostrarSugeridos : boolean = false;
   
   
 
@@ -28,6 +37,7 @@ export class PorPaisComponent implements OnInit {
      
     this.hayError =false;
     this.termino = termino;
+
     this.paisService.buscarPais(this.termino)
     .subscribe(paises => {
 
@@ -40,7 +50,20 @@ export class PorPaisComponent implements OnInit {
     });
   }
   sugerencias(termino:string){          //cuando de error si borras desaparece en 300 milisegundos la alerta
+   
+    this.mostrarSugeridos = true
+   this.termino = termino;
     this.hayError = false;
 
+    this.paisService.buscarPais(termino)
+    .subscribe(paises => this.paisesSugeridos = paises.splice(0.3),
+    (err) =>this.paisesSugeridos = []
+    );
+  }
+
+  buscarSugerido( termino : string){
+
+    this.buscar( termino);
+    
   }
 }

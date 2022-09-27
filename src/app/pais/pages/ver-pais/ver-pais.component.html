@@ -1,1 +1,57 @@
-<p>ver-pais works!</p>
+
+
+
+<div *ngIf="!pais;else divPais "
+class="alert alert-info">
+    Espere por favor...
+</div>
+
+
+<ng-template #divPais>
+ <div *ngFor="let pais of pais">
+    <div class="row">
+     <tr >
+         <h1>Pais: <small>{{pais.translations['spa'].common}}</small></h1>
+         <hr>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <h3>Bandera</h3>
+            <img class="img-thumbnail" [src]="pais.flags.png">
+
+        </div>
+        <div class="col">
+            <h3>Iformación</h3>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>Región:  </strong>{{pais.region}}
+                </li>
+                <li class="list-group-item">
+                    <strong>población:  </strong>{{pais.population | number}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Código Alpha:  </strong>{{pais.cca3}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <h3>Traducciones</h3> 
+    <hr>
+    <div class="row">
+        <div class="col">
+            <span class="bag bg-primary mr-1">{{pais.translations['spa'].common}}</span>
+            <span class="bag bg-primary mr-1">{{pais.translations['per'].common}}</span>
+            <span class="bag bg-primary mr-1">{{pais.translations['jpn'].common}}</span>
+            <span class="bag bg-primary mr-1">{{pais.translations['rus'].common}}</span>
+           
+
+        </div>
+    </div>  
+    <!--Sirve para ver toda la info de la data y busqueda-->
+    <!--<pre class="mt-5">
+        {{pais | json}}
+    </pre>-->
+</div>  
+
+</ng-template>

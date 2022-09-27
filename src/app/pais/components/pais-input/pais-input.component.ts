@@ -20,7 +20,7 @@ debouncer: Subject<string> = new Subject();     //subject es un Observable
  
  ngOnInit(){
   this.debouncer
-  .pipe(debounceTime(300))                      //transforma la salida ( como un tubo)  //300 las milesimas cuando dejas de escribir
+  .pipe(debounceTime(100))                      //transforma la salida ( como un tubo)  //300 las milesimas cuando dejas de escribir
   .subscribe(valor => {               //para hacer el input en html
     this.onDebounce.emit(valor);
   })
